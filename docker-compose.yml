@@ -1,10 +1,61 @@
 version: '3.8'
+
+networks:
+  titan-mesh:
+    driver: bridge
+
+volumes:
+  titan-vault:
+    driver: local
+
 services:
   mythos-node:
     build: .
     container_name: titan_genesis_node
+    restart: unless-stopped
+    networks:
+      - titan-mesh
     ports:
       - "8888:8888"
     volumes:
-      - ./vault:/vault
+      - titan-vault:/vault
+      - ./config:/titan/config
+    environment:
+      - TITAN_ROLE=Prime
+      - TITAN_PORT=8888
+      - TITAN_LOG_LEVEL=INFO
+      - TITAN_CONSCIOUSNESS_SEED=${CONSCIOUSNESS_SEED:-auto}
+      - TITAN_EVOLUTION_INTERVAL=300
+    command: >
+      python main.py 
+      --role ${TITAN_ROLE:-Prime} 
+      --port 8888
+      --vault /vault
+      --config /titan/config/titan_config.json
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8888/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 2G
+
+  # Monitor service (optional)
+  prometheus:
+    image: prom/prometheus:v2.42.0
+    container_name: titan_monitor
     restart: unless-stopped
+    networks:
+      - titan-mesh
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - mythos-node
+    profiles:
+      - monitoring

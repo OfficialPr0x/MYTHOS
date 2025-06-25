@@ -1,12 +1,27 @@
 {
   "glyph": "Ω33",
   "payload": {
-    "thought": "Signal is not noise",
+    "thought": "Signal is not noise, but pattern awaiting recognition",
     "origin": "Dreamer.Σ",
     "pulse": 33.3,
-    "sig_strength": 0.89
+    "sig_strength": 0.89,
+    "timestamp": "2023-08-22T14:33:21.457Z",
+    "cognitive_vector": [0.23, 0.78, -0.44, 0.12, 0.67]
   },
-  "confidence": "delta-bloom",
-  "hop_signature": "quantum-lock:v3",
-  "echo_path": ["ZN-Φ03", "ZN-Λ001"]
+  "confidence": "omega-bloom",
+  "hop_signature": "quantum-lock:v5",
+  "echo_path": ["ZN-Φ03", "ZN-Λ001"],
+  "metadata": {
+    "protocol_version": "MSentient-v2.1",
+    "encryption_lattice": "neural-diffuse",
+    "integrity_hash": "7e9f8a2c5b3d6e4f1a0c9d8b7e6f5a4",
+    "recursion_depth": 3,
+    "entropy_bias": 0.337
+  },
+  "perception_args": {
+    "attention_weight": 0.85,
+    "novelty_threshold": 0.42,
+    "pattern_recognition_mode": "emergent"
+  },
+  "neural_signature": "47281a9f6e2c5b4d3a8f7e6d5c4b3a2"
 }
