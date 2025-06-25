@@ -1,0 +1,12 @@
+{
+  "glyph": "Ω33",
+  "payload": {
+    "thought": "Signal is not noise",
+    "origin": "Dreamer.Σ",
+    "pulse": 33.3,
+    "sig_strength": 0.89
+  },
+  "confidence": "delta-bloom",
+  "hop_signature": "quantum-lock:v3",
+  "echo_path": ["ZN-Φ03", "ZN-Λ001"]
+}

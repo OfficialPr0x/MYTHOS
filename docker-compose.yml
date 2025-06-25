@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  mythos-node:
+    build: .
+    container_name: titan_genesis_node
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./vault:/vault
+    restart: unless-stopped
